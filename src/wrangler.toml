@@ -1,0 +1,3 @@
+name = "puter-proxy"
+main = "src/main.js"
+compatibility_date = "2025-08-19"
