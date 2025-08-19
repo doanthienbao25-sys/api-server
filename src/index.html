@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Puter AI Test</title>
-    <script src="https://js.puter.com/v2/"></script>
-  </head>
-  <body>
-    <h1>Test Puter AI</h1>
-    <button onclick="ask()">Hỏi AI</button>
-    <pre id="result"></pre>
+<head>
+  <meta charset="utf-8">
+  <title>Puter AI Test</title>
+  <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+  <h1>Chat with AI</h1>
+  <input id="q" placeholder="Ask me anything..." />
+  <button onclick="ask()">Send</button>
+  <pre id="ans"></pre>
 
-    <script>
-      async function ask() {
-        const res = await puter.ai.chat("Xin chào AI!", { model: "gpt-4.1-nano" });
-        document.getElementById("result").innerText = JSON.stringify(res, null, 2);
-      }
-    </script>
-  </body>
-</html>
+  <script>
+    async function ask() {
+      const q = document.getElementById("q").value;
+      const ai = new Puter.ai.Chat({ model: "gpt-4.1-nano" });
+      const res = await ai.send(q);
+      document.getElementById("ans").textContent = res.output_text;
+    }
+  </script>
